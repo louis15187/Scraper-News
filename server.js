@@ -26,13 +26,20 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-mongoose.connect("mongodb: //localhost/scraped_news");
+
+const MONGODB_URI =
+    process.env.MONGODB_URI || "mongodb://localhost/scraper_news";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
 var db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function() {
     console.log("Connected to Mongoose!");
 });
+
+var routes = require("./controller/controller");
+app.use("/", routes);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
