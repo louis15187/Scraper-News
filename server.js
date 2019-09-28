@@ -38,6 +38,9 @@ db.once("open", function() {
     console.log("Connected to Mongoose!");
 });
 
+// Make public a static folder
+app.use(express.static("public"));
+
 var routes = require("./controller/controller.js");
 console.log(routes);
 app.use(routes);
