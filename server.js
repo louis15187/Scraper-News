@@ -14,7 +14,7 @@ app.use(
     })
 );
 
-app.use(express.static(process.cwd() + "/public"));
+
 
 //Require set up handlebars
 var exphbs = require("express-handlebars");
@@ -38,8 +38,9 @@ db.once("open", function() {
     console.log("Connected to Mongoose!");
 });
 
-var routes = require("./controller/controller");
-app.use("/", routes);
+var routes = require("./controller/controller.js");
+console.log(routes);
+app.use(routes);
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
