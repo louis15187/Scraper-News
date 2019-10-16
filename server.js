@@ -40,7 +40,7 @@ db.once("open", function() {
 var routes = require("./controller/controller");
 app.use("/", routes);
 //Create localhost port
-var port = process.env.PORT || 3002;
+var port = process.env.PORT || 3004;
 app.listen(port, function() {
   console.log("Listening on PORT " + port);
 });
